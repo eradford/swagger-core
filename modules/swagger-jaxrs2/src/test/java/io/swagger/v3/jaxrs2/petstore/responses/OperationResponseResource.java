@@ -14,7 +14,7 @@ import javax.ws.rs.core.Response;
  */
 public class OperationResponseResource {
     @GET
-    @Path("/users")
+    @Path("/responseinoperation")
     @Operation(summary = "Find Users",
             description = "Returns the Users",
             responses = {@ApiResponse(responseCode = "200", description = "Status OK")})

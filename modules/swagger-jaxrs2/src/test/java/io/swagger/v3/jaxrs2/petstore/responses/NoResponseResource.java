@@ -14,7 +14,7 @@ import javax.ws.rs.core.Response;
  */
 public class NoResponseResource {
     @GET
-    @Path("/pets")
+    @Path("/noresponse")
     @Operation(summary = "Find pets",
             description = "Returns the Pets")
     public Response getPets() throws NotFoundException {

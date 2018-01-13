@@ -14,7 +14,7 @@ import javax.ws.rs.core.Response;
  */
 public class PriorityResponseResource {
     @GET
-    @Path("/pets")
+    @Path("/priorityresponses")
     @Operation(summary = "Find pets",
             description = "Returns the Pets",
             responses = {@ApiResponse(responseCode = "200", description = "Inside Operation Response")})

@@ -12,14 +12,14 @@ import javax.ws.rs.Path;
  * Resource With a Hidden Operation
  */
 public class HiddenOperationResource {
-    @Path("/pets")
+    @Path("/hiddenbyflag")
     @GET
     @Operation(operationId = "Pets", description = "Pets Example", hidden = true)
     public Pet getPet() {
         return new Pet();
     }
 
-    @Path("/users")
+    @Path("/hiddenbyannotation")
     @GET
     @Operation(operationId = "Users", description = "Users Example")
     @Hidden

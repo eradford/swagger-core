@@ -14,7 +14,7 @@ import javax.ws.rs.core.Response;
  */
 public class MethodResponseResource {
     @GET
-    @Path("/pets")
+    @Path("/responseinmethod")
     @Operation(summary = "Find pets",
             description = "Returns the Pets")
     @ApiResponse(responseCode = "200", description = "Status OK")

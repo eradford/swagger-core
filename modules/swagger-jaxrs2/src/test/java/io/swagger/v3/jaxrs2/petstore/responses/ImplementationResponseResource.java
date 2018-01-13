@@ -13,7 +13,7 @@ import javax.ws.rs.Path;
  */
 public class ImplementationResponseResource {
     @GET
-    @Path("/")
+    @Path("/implementationresponse")
     @Operation(
             summary = "Simple get operation",
             description = "Defines a simple get operation with no inputs and a complex output object",
@@ -25,7 +25,9 @@ public class ImplementationResponseResource {
                             description = "voila!",
                             content = @Content(
                                     mediaType = "application/json",
-                                    schema = @Schema(implementation = ImplementationResponseResource.SampleResponseSchema.class)
+                                    schema =
+                                    @Schema(
+                                            implementation = ImplementationResponseResource.SampleResponseSchema.class)
                             )
                     ),
                     @ApiResponse(
@@ -33,7 +35,8 @@ public class ImplementationResponseResource {
                             description = "boo",
                             content = @Content(
                                     mediaType = "*/*",
-                                    schema = @Schema(implementation = ImplementationResponseResource.GenericError.class)
+                                    schema =
+                                    @Schema(implementation = ImplementationResponseResource.GenericError.class)
                             )
                     )
             }

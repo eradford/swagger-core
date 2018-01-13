@@ -1,6 +1,6 @@
 openapi: 3.0.1
 paths:
-  /users:
+  /responseinoperation:
     get:
       summary: Find Users
       description: Returns the Users

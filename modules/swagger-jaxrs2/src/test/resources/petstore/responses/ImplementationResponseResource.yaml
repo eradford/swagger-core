@@ -1,6 +1,6 @@
 openapi: 3.0.1
 paths:
-  /:
+  /implementationresponse:
     get:
       summary: Simple get operation
       description: Defines a simple get operation with no inputs and a complex output

@@ -1,6 +1,6 @@
 openapi: 3.0.1
 paths:
-  /pets:
+  /priorityresponses:
     get:
       summary: Find pets
       description: Returns the Pets

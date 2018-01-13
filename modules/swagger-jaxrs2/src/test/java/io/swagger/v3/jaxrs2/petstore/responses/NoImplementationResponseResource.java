@@ -13,7 +13,7 @@ import javax.ws.rs.QueryParam;
  * Resource with a Response at Method Level
  */
 public class NoImplementationResponseResource {
-    @Path("/users")
+    @Path("/noimplementationresponseresource")
     @Operation(operationId = "getUser",
             responses = {
                     @ApiResponse(description = "test description", responseCode = "400",
@@ -28,7 +28,7 @@ public class NoImplementationResponseResource {
                             })}
     )
     @GET
-    public NoImplementationResponseResource.User getUser(@QueryParam("userId") String userId) {
+    public NoImplementationResponseResource.User getUser(@QueryParam("userId")final String userId) {
         return null;
     }
 
@@ -40,7 +40,7 @@ public class NoImplementationResponseResource {
             return id;
         }
 
-        public void setId(String id) {
+        public void setId(final String id) {
             this.id = id;
         }
 
@@ -48,7 +48,7 @@ public class NoImplementationResponseResource {
             return username;
         }
 
-        public void setUsername(String username) {
+        public void setUsername(final String username) {
             this.username = username;
         }
     }
