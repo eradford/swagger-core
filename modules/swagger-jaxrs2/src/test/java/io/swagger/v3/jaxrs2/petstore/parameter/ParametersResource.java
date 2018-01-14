@@ -18,7 +18,7 @@ import javax.ws.rs.Path;
  * Resource with some Parameters examples
  */
 public class ParametersResource {
-    @Path("/test")
+    @Path("/parameters")
     @POST
     @Operation(
             operationId = "subscribe",

@@ -1,6 +1,6 @@
 openapi: 3.0.1
 paths:
-  /{petId}:
+  /fullyannotatedoperation:
     get:
       summary: Find pet by ID
       description: Returns a pet when 0 < ID <= 10.  ID > 10 or non integers will

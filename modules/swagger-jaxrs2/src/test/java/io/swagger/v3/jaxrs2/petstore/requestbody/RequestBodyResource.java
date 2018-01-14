@@ -9,6 +9,7 @@ import io.swagger.v3.oas.annotations.parameters.RequestBody;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
@@ -19,62 +20,83 @@ import javax.ws.rs.core.Response;
  * Resource with RequestBody examples
  */
 public class RequestBodyResource {
+    @GET
+    @Path("/methodWithRequestBodyWithoutContent")
+    @Operation(summary = "Create user",
+            description = "This can only be done by the logged in user.")
+    public Response methodWithRequestBodyWithoutContent(
+            @RequestBody(description = "Created user object", required = true) final User user) {
+        return Response.ok().entity("").build();
+    }
+
+    @GET
+    @Path("/methodWithRequestBodyWithoutContentWithoutImplementation")
+    @Operation(summary = "Create user",
+            description = "This can only be done by the logged in user.")
+    public Response methodWithRequestBodyWithoutContentWithoutImplementation(
+            @RequestBody(description = "Created user object", required = true,
+                    content = @Content(
+                            schema = @Schema(name = "User", description = "User description",
+                                    example = "User Description", required = true))) final User user) {
+        return Response.ok().entity("").build();
+    }
+
     @POST
-    @Path("/user")
+    @Path("/methodWithRequestBodyAndTwoParameters")
     @Operation(summary = "Create user",
             description = "This can only be done by the logged in user.")
     public Response methodWithRequestBodyAndTwoParameters(
             @RequestBody(description = "Created user object", required = true,
                     content = @Content(
-                            schema = @Schema(implementation = User.class))) User user,
-            @QueryParam("name") String name, @QueryParam("code") String code) {
+                            schema = @Schema(implementation = User.class))) final User user,
+            @QueryParam("name") final String name, @QueryParam("code") final String code) {
         return Response.ok().entity("").build();
     }
 
     @PUT
-    @Path("/user")
+    @Path("/methodWithRequestBodyWithoutAnnotation")
     @Operation(summary = "Modify user",
             description = "Modifying user.")
     public Response methodWithRequestBodyWithoutAnnotation(
-            User user) {
+            final User user) {
         return Response.ok().entity("").build();
     }
 
     @DELETE
-    @Path("/user")
+    @Path("/methodWithoutRequestBodyAndTwoParameters")
     @Operation(summary = "Delete user",
             description = "This can only be done by the logged in user.")
     public Response methodWithoutRequestBodyAndTwoParameters(
-            @QueryParam("name") String name, @QueryParam("code") String code) {
+            @QueryParam("name") final String name, @QueryParam("code") final String code) {
         return Response.ok().entity("").build();
     }
 
     @PUT
-    @Path("/pet")
+    @Path("/methodWithRequestBodyWithoutAnnotationAndTwoConsumes")
     @Operation(summary = "Modify pet",
             description = "Modifying pet.")
     @Consumes({"application/json", "application/xml"})
     public Response methodWithRequestBodyWithoutAnnotationAndTwoConsumes(
-            User user) {
+            final User user) {
         return Response.ok().entity("").build();
     }
 
     @POST
-    @Path("/pet")
+    @Path("/methodWithTwoRequestBodyWithoutAnnotationAndTwoConsumes")
     @Operation(summary = "Create pet",
             description = "Creating pet.")
     @Consumes({"application/json", "application/xml"})
     public Response methodWithTwoRequestBodyWithoutAnnotationAndTwoConsumes(
-            Pet pet, User user) {
+            final Pet pet, final User user) {
         return Response.ok().entity("").build();
     }
 
     @DELETE
-    @Path("/pet")
+    @Path("/methodWithOneSimpleRequestBody")
     @Operation(summary = "Delete pet",
             description = "Deleting pet.")
     @Consumes({"application/json", "application/xml"})
-    public Response methodWithOneSimpleRequestBody(int id) {
+    public Response methodWithOneSimpleRequestBody(final int id) {
         return Response.ok().entity("").build();
     }
 }

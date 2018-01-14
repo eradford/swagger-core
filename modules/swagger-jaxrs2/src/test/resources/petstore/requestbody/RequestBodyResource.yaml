@@ -1,6 +1,38 @@
 openapi: 3.0.1
 paths:
-  /user:
+  /methodWithRequestBodyWithoutContent:
+    get:
+      summary: Create user
+      description: This can only be done by the logged in user.
+      operationId: methodWithRequestBodyWithoutContent
+      requestBody:
+        description: Created user object
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      responses:
+        default:
+          description: default response
+  /methodWithRequestBodyWithoutContentWithoutImplementation:
+    get:
+      summary: Create user
+      description: This can only be done by the logged in user.
+      operationId: methodWithRequestBodyWithoutContentWithoutImplementation
+      requestBody:
+        description: Created user object
+        content:
+          '*/*':
+            schema:
+              type: string
+              description: User description
+              example: User Description
+        required: true
+      responses:
+        default:
+          description: default response
+  /methodWithRequestBodyWithoutAnnotation:
     put:
       summary: Modify user
       description: Modifying user.
@@ -13,6 +45,74 @@ paths:
       responses:
         default:
           description: default response
+  /methodWithoutRequestBodyAndTwoParameters:
+    delete:
+      summary: Delete user
+      description: This can only be done by the logged in user.
+      operationId: methodWithoutRequestBodyAndTwoParameters
+      parameters:
+      - name: name
+        in: query
+        schema:
+          type: string
+      - name: code
+        in: query
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+  /methodWithRequestBodyWithoutAnnotationAndTwoConsumes:
+    put:
+      summary: Modify pet
+      description: Modifying pet.
+      operationId: methodWithRequestBodyWithoutAnnotationAndTwoConsumes
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        default:
+          description: default response
+  /methodWithTwoRequestBodyWithoutAnnotationAndTwoConsumes:
+    post:
+      summary: Create pet
+      description: Creating pet.
+      operationId: methodWithTwoRequestBodyWithoutAnnotationAndTwoConsumes
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pet'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Pet'
+      responses:
+        default:
+          description: default response
+  /methodWithOneSimpleRequestBody:
+    delete:
+      summary: Delete pet
+      description: Deleting pet.
+      operationId: methodWithOneSimpleRequestBody
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: integer
+              format: int32
+          application/xml:
+            schema:
+              type: integer
+              format: int32
+      responses:
+        default:
+          description: default response
+  /methodWithRequestBodyAndTwoParameters:
     post:
       summary: Create user
       description: This can only be done by the logged in user.
@@ -33,70 +133,6 @@ paths:
             schema:
               $ref: '#/components/schemas/User'
         required: true
-      responses:
-        default:
-          description: default response
-    delete:
-      summary: Delete user
-      description: This can only be done by the logged in user.
-      operationId: methodWithoutRequestBodyAndTwoParameters
-      parameters:
-      - name: name
-        in: query
-        schema:
-          type: string
-      - name: code
-        in: query
-        schema:
-          type: string
-      responses:
-        default:
-          description: default response
-  /pet:
-    put:
-      summary: Modify pet
-      description: Modifying pet.
-      operationId: methodWithRequestBodyWithoutAnnotationAndTwoConsumes
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/User'
-          application/xml:
-            schema:
-              $ref: '#/components/schemas/User'
-      responses:
-        default:
-          description: default response
-    post:
-      summary: Create pet
-      description: Creating pet.
-      operationId: methodWithTwoRequestBodyWithoutAnnotationAndTwoConsumes
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Pet'
-          application/xml:
-            schema:
-              $ref: '#/components/schemas/Pet'
-      responses:
-        default:
-          description: default response
-    delete:
-      summary: Delete pet
-      description: Deleting pet.
-      operationId: methodWithOneSimpleRequestBody
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: integer
-              format: int32
-          application/xml:
-            schema:
-              type: integer
-              format: int32
       responses:
         default:
           description: default response
