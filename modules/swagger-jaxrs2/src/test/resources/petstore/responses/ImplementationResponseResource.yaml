@@ -12,8 +12,8 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SampleResponseSchema'
-        default:
+                $ref: '#/components/schemas/SecondSampleResponseSchema'
+        400:
           description: boo
           content:
             '*/*':
@@ -22,6 +22,8 @@ paths:
       deprecated: true
 components:
   schemas:
+    SecondSampleResponseSchema:
+      type: object
     GenericError:
       type: object
     SampleResponseSchema:

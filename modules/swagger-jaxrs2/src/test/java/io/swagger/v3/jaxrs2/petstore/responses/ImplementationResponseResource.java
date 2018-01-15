@@ -23,15 +23,24 @@ public class ImplementationResponseResource {
                     @ApiResponse(
                             responseCode = "200",
                             description = "voila!",
-                            content = @Content(
-                                    mediaType = "application/json",
-                                    schema =
-                                    @Schema(
-                                            implementation = ImplementationResponseResource.SampleResponseSchema.class)
-                            )
+                            content = {
+                                    @Content(
+                                            mediaType = "application/json",
+                                            schema =
+                                            @Schema(
+                                                    implementation = ImplementationResponseResource.SampleResponseSchema.class)
+                                    ),
+                                    @Content(
+                                            mediaType = "application/json",
+                                            schema =
+                                            @Schema(
+                                                    implementation = ImplementationResponseResource.SecondSampleResponseSchema.class)
+                                    )
+                            }
+
                     ),
                     @ApiResponse(
-                            responseCode = "default",
+                            responseCode = "400",
                             description = "boo",
                             content = @Content(
                                     mediaType = "*/*",
@@ -46,6 +55,11 @@ public class ImplementationResponseResource {
     }
 
     static class SampleResponseSchema {
+        @Schema(description = "the user id")
+        private String id;
+    }
+
+    static class SecondSampleResponseSchema {
         @Schema(description = "the user id")
         private String id;
     }

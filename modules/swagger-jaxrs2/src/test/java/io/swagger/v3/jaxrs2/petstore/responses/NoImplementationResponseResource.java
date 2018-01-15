@@ -28,7 +28,7 @@ public class NoImplementationResponseResource {
                             })}
     )
     @GET
-    public NoImplementationResponseResource.User getUser(@QueryParam("userId")final String userId) {
+    public NoImplementationResponseResource.User getUser(@QueryParam("userId") final String userId) {
         return null;
     }
 

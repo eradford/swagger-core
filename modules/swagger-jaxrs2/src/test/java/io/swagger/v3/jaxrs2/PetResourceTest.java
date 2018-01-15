@@ -16,8 +16,10 @@ import io.swagger.v3.jaxrs2.petstore.operation.NotAnnotatedSameNameOperationReso
 import io.swagger.v3.jaxrs2.petstore.operation.OperationWithoutAnnotationResource;
 import io.swagger.v3.jaxrs2.petstore.operation.ServerOperationResource;
 import io.swagger.v3.jaxrs2.petstore.parameter.ArraySchemaResource;
+import io.swagger.v3.jaxrs2.petstore.parameter.MultipleNotAnnotatedParameter;
 import io.swagger.v3.jaxrs2.petstore.parameter.ParametersResource;
 import io.swagger.v3.jaxrs2.petstore.parameter.RepeatableParametersResource;
+import io.swagger.v3.jaxrs2.petstore.parameter.SingleNotAnnotatedParameter;
 import io.swagger.v3.jaxrs2.petstore.requestbody.RequestBodyMethodPriorityResource;
 import io.swagger.v3.jaxrs2.petstore.requestbody.RequestBodyParameterPriorityResource;
 import io.swagger.v3.jaxrs2.petstore.requestbody.RequestBodyResource;
@@ -124,6 +126,8 @@ public class PetResourceTest extends AbstractAnnotationTest {
         compare(ParametersResource.class, PARAMETERS_SOURCE);
         compare(RepeatableParametersResource.class, PARAMETERS_SOURCE);
         compare(ArraySchemaResource.class, PARAMETERS_SOURCE);
+        compare(SingleNotAnnotatedParameter.class, PARAMETERS_SOURCE);
+        compare(MultipleNotAnnotatedParameter.class, PARAMETERS_SOURCE);
     }
 
     @Test(description = "Test ApiResponses resource)")
