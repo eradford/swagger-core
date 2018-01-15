@@ -1,13 +1,14 @@
 openapi: 3.0.1
 paths:
-  /singlenoannotatedparameter:
+  /singlejaxrsannotatedparameter:
     get:
       operationId: create User
-      requestBody:
-        content:
-          '*/*':
-            schema:
-              type: string
+      parameters:
+      - name: id
+        in: query
+        description: idParam
+        schema:
+          type: string
       responses:
         default:
           description: default response
@@ -15,17 +16,6 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/User'
-  /multiplenoannotatedparameter:
-    post:
-      operationId: create User_1
-      requestBody:
-        content:
-          '*/*':
-            schema:
-              type: string
-      responses:
-        default:
-          description: default response
 components:
   schemas:
     User:

@@ -57,7 +57,7 @@ public class PetResource {
             })
     public Response getPetById(
             @Parameter(description = "ID of pet that needs to be fetched"/*, _enum = "range[1,10]"*/, required = true)
-            @PathParam("petId") Long petId) throws NotFoundException {
+            @PathParam("petId") final Long petId) throws NotFoundException {
         Pet pet = petData.getPetById(petId);
         if (null != pet) {
             return Response.ok().entity(pet).build();
@@ -73,7 +73,7 @@ public class PetResource {
                     @ApiResponse(responseCode = "405", description = "Invalid input")
             })
     public Response addPet(
-            @Parameter(description = "Pet object that needs to be added to the store", required = true) Pet pet) {
+            @Parameter(description = "Pet object that needs to be added to the store", required = true) final Pet pet) {
         petData.addPet(pet);
         return Response.ok().entity("SUCCESS").build();
     }
@@ -86,7 +86,7 @@ public class PetResource {
             responses = {
                     @ApiResponse(responseCode = "405", description = "Invalid input")
             })
-    public Response addPetNoAnnotation(Pet pet) {
+    public Response addPetNoAnnotation(final Pet pet) {
         petData.addPet(pet);
         return Response.ok().entity("SUCCESS").build();
     }
@@ -99,7 +99,7 @@ public class PetResource {
                     @ApiResponse(responseCode = "405", description = "Invalid input")
             })
     public Response addPetByInteger(
-            @Parameter(description = "Pet object that needs to be added to the store", required = true) int petId) {
+            @Parameter(description = "Pet object that needs to be added to the store", required = true) final int petId) {
         return Response.ok().entity("SUCCESS").build();
     }
 
@@ -110,7 +110,7 @@ public class PetResource {
             responses = {
                     @ApiResponse(responseCode = "405", description = "Invalid input")
             })
-    public Response addPetByIntegerNoAnnotation(int petId) {
+    public Response addPetByIntegerNoAnnotation(final int petId) {
         return Response.ok().entity("SUCCESS").build();
     }
 
@@ -121,7 +121,7 @@ public class PetResource {
                     @ApiResponse(responseCode = "404", description = "Pet not found"),
                     @ApiResponse(responseCode = "405", description = "Validation exception")})
     public Response updatePet(
-            @Parameter(description = "Pet object that needs to be added to the store", required = true) Pet pet) {
+            @Parameter(description = "Pet object that needs to be added to the store", required = true) final Pet pet) {
         petData.addPet(pet);
         return Response.ok().entity("SUCCESS").build();
     }
@@ -140,8 +140,8 @@ public class PetResource {
                     )}
     )
     public Response findPetsByStatus(
-            @Parameter(description = "Status values that need to be considered for filter", required = true/*, defaultValue = "available", allowableValues = "available,pending,sold", allowMultiple = true*/) @QueryParam("status") String status,
-            @BeanParam QueryResultBean qr
+            @Parameter(description = "Status values that need to be considered for filter", required = true) @QueryParam("status") final String status,
+            @BeanParam final QueryResultBean qr
     ) {
         return Response.ok(petData.findPetByStatus(status)).build();
     }
@@ -159,7 +159,7 @@ public class PetResource {
             })
     @Deprecated
     public Response findPetsByTags(
-            @Parameter(description = "Tags to filter by", required = true/*, allowMultiple = true*/) @QueryParam("tags") String tags) {
+            @Parameter(description = "Tags to filter by", required = true) @QueryParam("tags") final String tags) {
         return Response.ok(petData.findPetByTags(tags)).build();
     }
 }

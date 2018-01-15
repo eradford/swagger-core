@@ -15,7 +15,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 
 public class RepeatableParametersResource {
-    @Path("/test")
+    @Path("/repeatableparameter")
     @POST
     @Parameter(in = ParameterIn.PATH, name = "subscriptionId", required = true,
             schema = @Schema(implementation = ParametersResource.SubscriptionResponse.class), style = ParameterStyle.SIMPLE)

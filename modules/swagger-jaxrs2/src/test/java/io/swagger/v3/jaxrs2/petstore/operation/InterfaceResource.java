@@ -1,4 +1,4 @@
-package io.swagger.v3.jaxrs2.petstore.subresources;
+package io.swagger.v3.jaxrs2.petstore.operation;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -18,5 +18,5 @@ public interface InterfaceResource {
             description = "Returns a pet in Parent"
     )
     Response getPetById(@Parameter(description = "ID of pet that needs to be fetched", required = true)
-                        @PathParam("petId") Long petId);
+                        @PathParam("petId")final Long petId);
 }

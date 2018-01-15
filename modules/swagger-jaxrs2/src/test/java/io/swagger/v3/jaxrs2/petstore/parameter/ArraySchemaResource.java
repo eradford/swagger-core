@@ -14,7 +14,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 
 public class ArraySchemaResource {
-    @Path("/test")
+    @Path("/arrayschema")
     @POST
     @Operation(
             operationId = "subscribe",
