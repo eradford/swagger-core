@@ -12,7 +12,7 @@ tags:
   externalDocs:
     description: docs desc class
 paths:
-  /:
+  /completetags:
     get:
       tags:
       - Third Tag

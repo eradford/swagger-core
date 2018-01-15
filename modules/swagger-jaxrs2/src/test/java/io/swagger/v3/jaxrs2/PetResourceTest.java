@@ -15,9 +15,11 @@ import io.swagger.v3.jaxrs2.petstore.operation.HiddenOperationResource;
 import io.swagger.v3.jaxrs2.petstore.operation.NotAnnotatedSameNameOperationResource;
 import io.swagger.v3.jaxrs2.petstore.operation.OperationWithoutAnnotationResource;
 import io.swagger.v3.jaxrs2.petstore.operation.ServerOperationResource;
+import io.swagger.v3.jaxrs2.petstore.operation.SubResource;
 import io.swagger.v3.jaxrs2.petstore.parameter.ArraySchemaResource;
 import io.swagger.v3.jaxrs2.petstore.parameter.MultipleNotAnnotatedParameter;
 import io.swagger.v3.jaxrs2.petstore.parameter.OpenAPIJaxRSAnnotatedParameter;
+import io.swagger.v3.jaxrs2.petstore.parameter.OpenAPIWithContentJaxRSAnnotatedParameter;
 import io.swagger.v3.jaxrs2.petstore.parameter.ParametersResource;
 import io.swagger.v3.jaxrs2.petstore.parameter.RepeatableParametersResource;
 import io.swagger.v3.jaxrs2.petstore.parameter.SingleJaxRSAnnotatedParameter;
@@ -32,7 +34,6 @@ import io.swagger.v3.jaxrs2.petstore.responses.NoResponseResource;
 import io.swagger.v3.jaxrs2.petstore.responses.OperationResponseResource;
 import io.swagger.v3.jaxrs2.petstore.responses.PriorityResponseResource;
 import io.swagger.v3.jaxrs2.petstore.security.SecurityResource;
-import io.swagger.v3.jaxrs2.petstore.operation.SubResource;
 import io.swagger.v3.jaxrs2.petstore.tags.CompleteTagResource;
 import io.swagger.v3.jaxrs2.petstore.tags.TagClassResource;
 import io.swagger.v3.jaxrs2.petstore.tags.TagMethodResource;
@@ -132,6 +133,7 @@ public class PetResourceTest extends AbstractAnnotationTest {
         compare(MultipleNotAnnotatedParameter.class, PARAMETERS_SOURCE);
         compare(SingleJaxRSAnnotatedParameter.class, PARAMETERS_SOURCE);
         compare(OpenAPIJaxRSAnnotatedParameter.class, PARAMETERS_SOURCE);
+        compare(OpenAPIWithContentJaxRSAnnotatedParameter.class, PARAMETERS_SOURCE);
     }
 
     @Test(description = "Test ApiResponses resource)")

@@ -20,7 +20,7 @@ import javax.ws.rs.core.Response;
 public class CompleteTagResource {
 
     @GET
-    @Path("/")
+    @Path("/completetags")
     @Operation(tags = {"Example Tag", "Second Tag"})
     @Tag(name = "Third Tag")
     @Tag(name = "Second Tag")

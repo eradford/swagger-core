@@ -15,7 +15,7 @@ import javax.ws.rs.QueryParam;
  * Class with Links
  */
 public class LinksResource {
-    @Path("/users")
+    @Path("/links")
     @Operation(operationId = "getUserWithAddress",
             responses = {
                     @ApiResponse(description = "test description",
@@ -37,7 +37,7 @@ public class LinksResource {
                             })}
     )
     @GET
-    public String getUser(@QueryParam("userId") String userId) {
+    public String getUser(@QueryParam("userId")final String userId) {
         return null;
     }
 

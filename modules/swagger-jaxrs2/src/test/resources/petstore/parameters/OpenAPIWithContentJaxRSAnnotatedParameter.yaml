@@ -1,14 +1,17 @@
 openapi: 3.0.1
 paths:
-  /openapijaxrsannotatedparameter:
+  /openapiwithcontentjaxrsannotatedparameter:
     get:
       operationId: create User
       parameters:
       - name: id
         in: query
         description: idParam
-        schema:
-          type: string
+        content:
+          '*/*':
+            schema:
+              type: string
+              description: Id Schema Definition
       responses:
         default:
           description: default response
