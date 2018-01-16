@@ -13,6 +13,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.QueryParam;
 
 /**
  * Resource with some Parameters examples
@@ -75,7 +76,8 @@ public class ParametersResource {
                     ))
             })
     @Consumes({"application/json", "application/xml"})
-    public ParametersResource.SubscriptionResponse subscribe() {
+    public ParametersResource.SubscriptionResponse subscribe(@Parameter(description = "idParam")
+                                                             @QueryParam("id") final String id) {
         return null;
     }
 

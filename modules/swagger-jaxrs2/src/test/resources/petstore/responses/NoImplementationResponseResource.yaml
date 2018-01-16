@@ -16,6 +16,13 @@ paths:
               operationId: getUser
               parameters:
                 userId: $request.query.userId
+        200:
+          description: 200 description
+          links:
+            pet:
+              operationId: getUser
+              parameters:
+                userId: $request.query.userId
 components:
   schemas:
     User:

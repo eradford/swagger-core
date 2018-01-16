@@ -94,6 +94,23 @@ paths:
       responses:
         default:
           description: default response
+  /methodWithTwoRequestBodyWithAnnotationAndTwoConsumes:
+    post:
+      summary: Create pet
+      description: Creating pet.
+      operationId: methodWithTwoRequestBodyWithAnnotationAndTwoConsumes
+      requestBody:
+        description: Request Body User
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        default:
+          description: default response
   /methodWithOneSimpleRequestBody:
     delete:
       summary: Delete pet

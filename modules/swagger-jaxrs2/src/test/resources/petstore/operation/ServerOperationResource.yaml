@@ -4,7 +4,7 @@ servers:
   description: server 1
   variables: {}
 paths:
-  /pets:
+  /serversoperation:
     get:
       description: Pets Example
       operationId: Pets

@@ -20,6 +20,7 @@ import io.swagger.v3.jaxrs2.petstore.parameter.ArraySchemaResource;
 import io.swagger.v3.jaxrs2.petstore.parameter.MultipleNotAnnotatedParameter;
 import io.swagger.v3.jaxrs2.petstore.parameter.OpenAPIJaxRSAnnotatedParameter;
 import io.swagger.v3.jaxrs2.petstore.parameter.OpenAPIWithContentJaxRSAnnotatedParameter;
+import io.swagger.v3.jaxrs2.petstore.parameter.OpenAPIWithImplementationJaxRSAnnotatedParameter;
 import io.swagger.v3.jaxrs2.petstore.parameter.ParametersResource;
 import io.swagger.v3.jaxrs2.petstore.parameter.RepeatableParametersResource;
 import io.swagger.v3.jaxrs2.petstore.parameter.SingleJaxRSAnnotatedParameter;
@@ -68,7 +69,6 @@ public class PetResourceTest extends AbstractAnnotationTest {
     private static final String LINKS_SOURCE = "petstore/links/";
     private static final String EXAMPLES_SOURCE = "petstore/example/";
     private static final String REQUEST_BODIES_SOURCE = "petstore/requestbody/";
-    private static final String SUB_RESOURCES_SOURCE = "petstore/subresources/";
     private static final String YAML_EXTENSION = ".yaml";
     private static final String PETSTORE_PACKAGE = "io.swagger.v3.jaxrs2.petstore";
     private static final char DOT = '.';
@@ -105,16 +105,13 @@ public class PetResourceTest extends AbstractAnnotationTest {
         compare(NotAnnotatedSameNameOperationResource.class, OPERATIONS_SOURCE);
         compare(ExternalDocumentationResource.class, OPERATIONS_SOURCE);
         compare(ServerOperationResource.class, OPERATIONS_SOURCE);
+        compare(SubResource.class, OPERATIONS_SOURCE);
+        //compare(OperationResource.class, OPERATIONS_SOURCE);
     }
 
     @Test(description = "Test OpenAPIDefinition resource)")
     public void testOpenAPIDefinitionResource() {
         compare(OpenAPIDefinitionResource.class, PETSTORE_SOURCE);
-    }
-
-    @Test(description = "Sub resources tests)")
-    public void testSubResource() {
-        compare(SubResource.class, SUB_RESOURCES_SOURCE);
     }
 
     @Test(description = "Test RequestBody resource)")
@@ -134,6 +131,7 @@ public class PetResourceTest extends AbstractAnnotationTest {
         compare(SingleJaxRSAnnotatedParameter.class, PARAMETERS_SOURCE);
         compare(OpenAPIJaxRSAnnotatedParameter.class, PARAMETERS_SOURCE);
         compare(OpenAPIWithContentJaxRSAnnotatedParameter.class, PARAMETERS_SOURCE);
+        compare(OpenAPIWithImplementationJaxRSAnnotatedParameter.class, PARAMETERS_SOURCE);
     }
 
     @Test(description = "Test ApiResponses resource)")

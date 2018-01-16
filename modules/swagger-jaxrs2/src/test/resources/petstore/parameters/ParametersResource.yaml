@@ -69,6 +69,11 @@ paths:
         explode: true
         schema:
           $ref: '#/components/schemas/SubscriptionResponse'
+      - name: id
+        in: query
+        description: idParam
+        schema:
+          type: string
       responses:
         default:
           description: test description

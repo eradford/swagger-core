@@ -1,6 +1,6 @@
 openapi: 3.0.1
 paths:
-  /{petId}:
+  /interfaceoperation/{petId}:
     get:
       summary: Find pet by ID Operation in SubResource
       description: Returns a pet in SubResource

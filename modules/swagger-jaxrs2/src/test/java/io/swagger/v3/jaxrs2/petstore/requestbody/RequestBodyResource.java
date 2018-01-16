@@ -91,6 +91,17 @@ public class RequestBodyResource {
         return Response.ok().entity("").build();
     }
 
+    @POST
+    @Path("/methodWithTwoRequestBodyWithAnnotationAndTwoConsumes")
+    @Operation(summary = "Create pet",
+            description = "Creating pet.")
+    @Consumes({"application/json", "application/xml"})
+    public Response methodWithTwoRequestBodyWithAnnotationAndTwoConsumes(
+            final @RequestBody(description = "Request Body Pet") Pet pet,
+            @RequestBody(description = "Request Body User") final User user) {
+        return Response.ok().entity("").build();
+    }
+
     @DELETE
     @Path("/methodWithOneSimpleRequestBody")
     @Operation(summary = "Delete pet",

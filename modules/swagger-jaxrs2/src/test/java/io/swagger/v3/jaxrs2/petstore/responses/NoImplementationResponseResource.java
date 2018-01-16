@@ -25,7 +25,18 @@ public class NoImplementationResponseResource {
                                             parameters = @LinkParameter(
                                                     name = "userId",
                                                     expression = "$request.query.userId"))
-                            })}
+                            }),
+                    @ApiResponse(description = "200 description", responseCode = "200",
+                            links = {
+                                    @Link(
+                                            name = "pet",
+                                            operationId = "getUser",
+                                            operationRef = "#/components/links/MyLink",
+                                            parameters = @LinkParameter(
+                                                    name = "userId",
+                                                    expression = "$request.query.userId"))
+                            })
+            }
     )
     @GET
     public NoImplementationResponseResource.User getUser(@QueryParam("userId") final String userId) {

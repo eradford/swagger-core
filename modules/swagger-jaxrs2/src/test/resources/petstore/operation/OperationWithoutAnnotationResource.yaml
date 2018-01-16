@@ -1,6 +1,6 @@
 openapi: 3.0.1
 paths:
-  /users:
+  /operationwithouannotation:
     get:
       operationId: getUser
       responses:

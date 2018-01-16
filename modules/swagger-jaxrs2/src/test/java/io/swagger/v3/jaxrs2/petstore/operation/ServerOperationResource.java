@@ -17,7 +17,7 @@ import javax.ws.rs.Path;
         }
 )
 public class ServerOperationResource {
-    @Path("/pets")
+    @Path("/serversoperation")
     @GET
     @Operation(operationId = "Pets", description = "Pets Example",
             servers = {
