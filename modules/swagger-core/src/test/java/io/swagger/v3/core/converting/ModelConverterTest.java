@@ -103,7 +103,8 @@ public class ModelConverterTest {
 
         final Map<String, Schema> nestedSchemas = readAll(ModelWithUrlProperty.class);
         assertEquals(nestedSchemas.size(), 1);
-        assertTrue(nestedSchemas.containsKey("MyProperty"));
+        assertTrue(nestedSchemas.containsKey("ModelWithUrlProperty"));
+        assertFalse(nestedSchemas.containsKey("MyProperties"));
     }
 
     @Test(description = "it should maintain property names")
@@ -200,7 +201,7 @@ public class ModelConverterTest {
                 Schema items = ((ArraySchema) property).getItems();
                 assertNotNull(items);
                 assertEquals(items.getClass(), MapSchema.class);
-                Schema stringProperty = ((MapSchema) items).getAdditionalProperties();
+                Schema stringProperty = (Schema)((MapSchema) items).getAdditionalProperties();
                 assertNotNull(stringProperty);
                 assertEquals(stringProperty.getClass(), StringSchema.class);
             } else if ("complexLeft".equals(name)) {
@@ -208,7 +209,7 @@ public class ModelConverterTest {
                 Schema items = ((ArraySchema) property).getItems();
                 assertNotNull(items);
                 assertEquals(items.getClass(), MapSchema.class);
-                Schema additionalProperty = ((MapSchema) items).getAdditionalProperties();
+                Schema additionalProperty = (Schema)((MapSchema) items).getAdditionalProperties();
                 assertNotNull(additionalProperty);
                 assertNotNull(additionalProperty.get$ref());
                 assertEquals(additionalProperty.get$ref(), "#/components/schemas/ComplexLeft");
