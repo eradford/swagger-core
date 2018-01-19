@@ -44,6 +44,7 @@ import io.swagger.v3.jaxrs2.petstore.tags.CompleteTagResource;
 import io.swagger.v3.jaxrs2.petstore.tags.TagClassResource;
 import io.swagger.v3.jaxrs2.petstore.tags.TagMethodResource;
 import io.swagger.v3.jaxrs2.petstore.tags.TagOpenAPIDefinitionResource;
+import io.swagger.v3.jaxrs2.petstore.tags.TagOperationResource;
 import io.swagger.v3.oas.models.OpenAPI;
 import org.testng.annotations.Test;
 
@@ -163,7 +164,7 @@ public class PetResourceTest extends AbstractAnnotationTest {
         compare(TagOpenAPIDefinitionResource.class, TAGS_SOURCE);
         compare(TagClassResource.class, TAGS_SOURCE);
         compare(TagMethodResource.class, TAGS_SOURCE);
-        //compare(TagOperationResource.class, TAGS_SOURCE);
+        compare(TagOperationResource.class, TAGS_SOURCE);
     }
 
     @Test(description = "Test a full set of classes")
@@ -252,7 +253,7 @@ public class PetResourceTest extends AbstractAnnotationTest {
         final String file = source + clazz.getSimpleName() + YAML_EXTENSION;
 
         try {
-            compareAsYaml(clazz, getOpenAPIasString(file));
+            compareAsYaml(clazz, getOpenAPIAsString(file));
         } catch (IOException e) {
             e.printStackTrace();
             fail();

@@ -12,7 +12,7 @@ import javax.ws.rs.core.Response;
 public class TagOperationResource {
 
     @GET
-    @Path("/")
+    @Path("/tagoperation")
     @Operation(tags = {"Example Tag", "Second Tag"})
     public Response getTags() {
         return Response.ok().entity("ok").build();
