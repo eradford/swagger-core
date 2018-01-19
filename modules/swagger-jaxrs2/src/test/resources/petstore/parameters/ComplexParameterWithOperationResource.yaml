@@ -1,10 +1,34 @@
 openapi: 3.0.1
 paths:
-  /noresponse:
+  /complexparameter:
     get:
-      summary: Find pets
-      description: Returns the Pets
-      operationId: getPets
+      operationId: create User
+      parameters:
+      - name: phone
+        in: path
+        description: Phone
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: query
+        description: idParam
+        schema:
+          type: string
+      - name: lastName
+        in: query
+        schema:
+          type: string
+      - name: address
+        in: query
+        description: address
+        schema:
+          $ref: '#/components/schemas/User'
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
       responses:
         default:
           description: default response

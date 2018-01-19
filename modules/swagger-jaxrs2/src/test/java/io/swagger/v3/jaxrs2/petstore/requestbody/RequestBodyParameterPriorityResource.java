@@ -15,7 +15,7 @@ import javax.ws.rs.core.Response;
  */
 public class RequestBodyParameterPriorityResource {
     @POST
-    @Path("/user")
+    @Path("/requestbodyparameterpriority")
     @Operation(summary = "Create user",
             description = "This can only be done by the logged in user.",
             requestBody = @RequestBody(description = "Inside Operation"))
@@ -23,7 +23,7 @@ public class RequestBodyParameterPriorityResource {
     public Response methodWithRequestBodyAndTwoParameters(
             @RequestBody(description = "Created user object inside Parameter", required = true,
                     content = @Content(
-                            schema = @Schema(implementation = User.class))) User user) {
+                            schema = @Schema(implementation = User.class)))final User user) {
         return Response.ok().entity("").build();
     }
 }

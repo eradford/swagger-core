@@ -46,21 +46,6 @@ public class OperationResource implements InterfaceResource {
         return Response.ok().entity(new Pet()).build();
     }
 
-    @Path("/combinatedhiddenbyflag")
-    @GET
-    @Operation(operationId = "Pets", description = "Pets Example", hidden = true)
-    public Pet getPet() {
-        return new Pet();
-    }
-
-    @Path("/combinatedhiddenbyannotation")
-    @GET
-    @Operation(operationId = "Users", description = "Users Example")
-    @Hidden
-    public User getUser(final int id) {
-        return new User();
-    }
-
     @Path("/combinatedotannotatedoperation")
     @GET
     public String getUser() {

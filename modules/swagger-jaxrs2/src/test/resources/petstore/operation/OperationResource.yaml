@@ -1,5 +1,30 @@
 openapi: 3.0.1
 paths:
+  /combinatednotannotatedoperationduplicated:
+    get:
+      operationId: getUser
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+      responses:
+        default:
+          description: default response
+          content:
+            '*/*':
+              schema:
+                type: string
+  /combinatedotannotatedoperation:
+    get:
+      operationId: getUser_1
+      responses:
+        default:
+          description: default response
+          content:
+            '*/*':
+              schema:
+                type: string
   /combinatedfullyannotatedoperation/{petId}:
     get:
       summary: Find pet by ID
@@ -46,31 +71,6 @@ paths:
       responses:
         default:
           description: default response
-  /combinatednotannotatedoperationduplicated:
-    get:
-      operationId: getUser
-      requestBody:
-        content:
-          '*/*':
-            schema:
-              type: string
-      responses:
-        default:
-          description: default response
-          content:
-            '*/*':
-              schema:
-                type: string
-  /combinatedotannotatedoperation:
-    get:
-      operationId: getUser_1
-      responses:
-        default:
-          description: default response
-          content:
-            '*/*':
-              schema:
-                type: string
   /combinatedsameOperationNameDuplicated:
     get:
       description: Same Operation Name Duplicated

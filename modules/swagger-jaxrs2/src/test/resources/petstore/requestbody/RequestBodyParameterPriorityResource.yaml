@@ -1,6 +1,6 @@
 openapi: 3.0.1
 paths:
-  /user:
+  /requestbodyparameterpriority:
     post:
       summary: Create user
       description: This can only be done by the logged in user.

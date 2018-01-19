@@ -2,6 +2,7 @@ package io.swagger.v3.jaxrs2.petstore.responses;
 
 import io.swagger.v3.jaxrs2.resources.exception.NotFoundException;
 import io.swagger.v3.jaxrs2.resources.model.Pet;
+import io.swagger.v3.jaxrs2.resources.model.User;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 
@@ -17,7 +18,7 @@ public class NoResponseResource {
     @Path("/noresponse")
     @Operation(summary = "Find pets",
             description = "Returns the Pets")
-    public Response getPets() throws NotFoundException {
-        return Response.ok().entity(new Pet()).build();
+    public User getPets() throws NotFoundException {
+        return new User();
     }
 }

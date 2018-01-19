@@ -15,14 +15,14 @@ import javax.ws.rs.core.Response;
  */
 public class RequestBodyMethodPriorityResource {
     @POST
-    @Path("/user")
+    @Path("/requestbodymethodpriority")
     @Operation(summary = "Create user",
             description = "This can only be done by the logged in user.",
             requestBody = @RequestBody(description = "Inside Operation"))
     @RequestBody(description = "Created user object on Method", required = true,
             content = @Content(
                     schema = @Schema(implementation = User.class)))
-    public Response methodWithRequestBodyAndTwoParameters(User user) {
+    public Response methodWithRequestBodyAndTwoParameters(final User user) {
         return Response.ok().entity("").build();
     }
 }

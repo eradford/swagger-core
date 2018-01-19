@@ -2,6 +2,7 @@ package io.swagger.v3.jaxrs2;
 
 import io.swagger.v3.jaxrs2.annotations.AbstractAnnotationTest;
 import io.swagger.v3.jaxrs2.petstore.EmptyPetResource;
+import io.swagger.v3.jaxrs2.petstore.callback.ComplexCallbackResource;
 import io.swagger.v3.jaxrs2.petstore.callback.MultipleCallbacksTestWithOperationResource;
 import io.swagger.v3.jaxrs2.petstore.callback.RepeatableCallbackResource;
 import io.swagger.v3.jaxrs2.petstore.callback.SimpleCallbackWithOperationResource;
@@ -13,10 +14,13 @@ import io.swagger.v3.jaxrs2.petstore.operation.ExternalDocumentationResource;
 import io.swagger.v3.jaxrs2.petstore.operation.FullyAnnotatedOperationResource;
 import io.swagger.v3.jaxrs2.petstore.operation.HiddenOperationResource;
 import io.swagger.v3.jaxrs2.petstore.operation.NotAnnotatedSameNameOperationResource;
+import io.swagger.v3.jaxrs2.petstore.operation.OperationResource;
 import io.swagger.v3.jaxrs2.petstore.operation.OperationWithoutAnnotationResource;
 import io.swagger.v3.jaxrs2.petstore.operation.ServerOperationResource;
 import io.swagger.v3.jaxrs2.petstore.operation.SubResource;
 import io.swagger.v3.jaxrs2.petstore.parameter.ArraySchemaResource;
+import io.swagger.v3.jaxrs2.petstore.parameter.ComplexParameterResource;
+import io.swagger.v3.jaxrs2.petstore.parameter.ComplexParameterWithOperationResource;
 import io.swagger.v3.jaxrs2.petstore.parameter.MultipleNotAnnotatedParameter;
 import io.swagger.v3.jaxrs2.petstore.parameter.OpenAPIJaxRSAnnotatedParameter;
 import io.swagger.v3.jaxrs2.petstore.parameter.OpenAPIWithContentJaxRSAnnotatedParameter;
@@ -28,6 +32,7 @@ import io.swagger.v3.jaxrs2.petstore.parameter.SingleNotAnnotatedParameter;
 import io.swagger.v3.jaxrs2.petstore.requestbody.RequestBodyMethodPriorityResource;
 import io.swagger.v3.jaxrs2.petstore.requestbody.RequestBodyParameterPriorityResource;
 import io.swagger.v3.jaxrs2.petstore.requestbody.RequestBodyResource;
+import io.swagger.v3.jaxrs2.petstore.responses.ComplexResponseResource;
 import io.swagger.v3.jaxrs2.petstore.responses.ImplementationResponseResource;
 import io.swagger.v3.jaxrs2.petstore.responses.MethodResponseResource;
 import io.swagger.v3.jaxrs2.petstore.responses.NoImplementationResponseResource;
@@ -39,7 +44,6 @@ import io.swagger.v3.jaxrs2.petstore.tags.CompleteTagResource;
 import io.swagger.v3.jaxrs2.petstore.tags.TagClassResource;
 import io.swagger.v3.jaxrs2.petstore.tags.TagMethodResource;
 import io.swagger.v3.jaxrs2.petstore.tags.TagOpenAPIDefinitionResource;
-import io.swagger.v3.jaxrs2.petstore.tags.TagOperationResource;
 import io.swagger.v3.oas.models.OpenAPI;
 import org.testng.annotations.Test;
 
@@ -94,6 +98,7 @@ public class PetResourceTest extends AbstractAnnotationTest {
         compare(SimpleCallbackWithOperationResource.class, CALLBACKS_SOURCE);
         compare(MultipleCallbacksTestWithOperationResource.class, CALLBACKS_SOURCE);
         compare(RepeatableCallbackResource.class, CALLBACKS_SOURCE);
+        compare(ComplexCallbackResource.class, CALLBACKS_SOURCE);
     }
 
     @Test(description = "Test some resources with different Operations scenarios)")
@@ -106,7 +111,7 @@ public class PetResourceTest extends AbstractAnnotationTest {
         compare(ExternalDocumentationResource.class, OPERATIONS_SOURCE);
         compare(ServerOperationResource.class, OPERATIONS_SOURCE);
         compare(SubResource.class, OPERATIONS_SOURCE);
-        //compare(OperationResource.class, OPERATIONS_SOURCE);
+        compare(OperationResource.class, OPERATIONS_SOURCE);
     }
 
     @Test(description = "Test OpenAPIDefinition resource)")
@@ -132,6 +137,8 @@ public class PetResourceTest extends AbstractAnnotationTest {
         compare(OpenAPIJaxRSAnnotatedParameter.class, PARAMETERS_SOURCE);
         compare(OpenAPIWithContentJaxRSAnnotatedParameter.class, PARAMETERS_SOURCE);
         compare(OpenAPIWithImplementationJaxRSAnnotatedParameter.class, PARAMETERS_SOURCE);
+        compare(ComplexParameterResource.class, PARAMETERS_SOURCE);
+        compare(ComplexParameterWithOperationResource.class, PARAMETERS_SOURCE);
     }
 
     @Test(description = "Test ApiResponses resource)")
@@ -142,6 +149,7 @@ public class PetResourceTest extends AbstractAnnotationTest {
         compare(ImplementationResponseResource.class, RESPONSES_SOURCE);
         compare(NoImplementationResponseResource.class, RESPONSES_SOURCE);
         compare(PriorityResponseResource.class, RESPONSES_SOURCE);
+        compare(ComplexResponseResource.class, RESPONSES_SOURCE);
     }
 
     @Test(description = "Test Security resource)")
@@ -155,8 +163,7 @@ public class PetResourceTest extends AbstractAnnotationTest {
         compare(TagOpenAPIDefinitionResource.class, TAGS_SOURCE);
         compare(TagClassResource.class, TAGS_SOURCE);
         compare(TagMethodResource.class, TAGS_SOURCE);
-        compare(TagOperationResource.class, TAGS_SOURCE);
-
+        //compare(TagOperationResource.class, TAGS_SOURCE);
     }
 
     @Test(description = "Test a full set of classes")
