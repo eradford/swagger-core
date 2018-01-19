@@ -1,6 +1,7 @@
 package io.swagger.v3.jaxrs2;
 
 import io.swagger.v3.jaxrs2.annotations.AbstractAnnotationTest;
+import io.swagger.v3.jaxrs2.matchers.SerializationMatchers;
 import io.swagger.v3.jaxrs2.petstore.EmptyPetResource;
 import io.swagger.v3.jaxrs2.petstore.callback.ComplexCallbackResource;
 import io.swagger.v3.jaxrs2.petstore.callback.MultipleCallbacksTestWithOperationResource;
@@ -14,7 +15,6 @@ import io.swagger.v3.jaxrs2.petstore.operation.ExternalDocumentationResource;
 import io.swagger.v3.jaxrs2.petstore.operation.FullyAnnotatedOperationResource;
 import io.swagger.v3.jaxrs2.petstore.operation.HiddenOperationResource;
 import io.swagger.v3.jaxrs2.petstore.operation.NotAnnotatedSameNameOperationResource;
-import io.swagger.v3.jaxrs2.petstore.operation.OperationResource;
 import io.swagger.v3.jaxrs2.petstore.operation.OperationWithoutAnnotationResource;
 import io.swagger.v3.jaxrs2.petstore.operation.ServerOperationResource;
 import io.swagger.v3.jaxrs2.petstore.operation.SubResource;
@@ -171,6 +171,11 @@ public class PetResourceTest extends AbstractAnnotationTest {
         Reader reader = new Reader(new OpenAPI());
         OpenAPI openAPI = reader.read(getSetOfClassesFromPackage(PETSTORE_PACKAGE));
         assertNotNull(openAPI);
+        try {
+            SerializationMatchers.assertEqualsToYaml(openAPI, getOpenAPIAsString(PETSTORE_SOURCE + "FullPetResource.yaml"));
+        } catch (IOException e) {
+            fail();
+        }
     }
 
     /**
