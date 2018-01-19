@@ -18,7 +18,9 @@ import javax.ws.rs.core.Response;
 /**
  * Resource with Complete Operations Examples
  */
-public class OperationResource implements InterfaceResource {
+public class OperationResource {
+    /*implements
+} InterfaceResource {
     @Override
     @Operation(summary = "Find pet by ID Operation in SubResource",
             description = "Returns a pet in SubResource"
@@ -72,5 +74,5 @@ public class OperationResource implements InterfaceResource {
             description = "Same Operation Name Duplicated")
     public String getPerson(final String id) {
         return new String();
-    }
+    }*/
 }

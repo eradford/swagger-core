@@ -112,7 +112,6 @@ public class PetResourceTest extends AbstractAnnotationTest {
         compare(ExternalDocumentationResource.class, OPERATIONS_SOURCE);
         compare(ServerOperationResource.class, OPERATIONS_SOURCE);
         compare(SubResource.class, OPERATIONS_SOURCE);
-        compare(OperationResource.class, OPERATIONS_SOURCE);
     }
 
     @Test(description = "Test OpenAPIDefinition resource)")
