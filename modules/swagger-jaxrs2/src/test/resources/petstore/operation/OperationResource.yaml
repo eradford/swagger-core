@@ -1,13 +1,8 @@
 openapi: 3.0.1
 paths:
-  /combinatednotannotatedoperationduplicated:
+  /operationsresource2:
     get:
       operationId: getUser
-      requestBody:
-        content:
-          '*/*':
-            schema:
-              type: string
       responses:
         default:
           description: default response
@@ -15,25 +10,14 @@ paths:
             '*/*':
               schema:
                 type: string
-  /combinatedotannotatedoperation:
-    get:
-      operationId: getUser_1
-      responses:
-        default:
-          description: default response
-          content:
-            '*/*':
-              schema:
-                type: string
-  /combinatedfullyannotatedoperation/{petId}:
+  /operationsresource:
     get:
       summary: Find pet by ID
-      description: Returns a pet when 0 < ID <= 10.  ID > 10 or non integers will
-        simulate API error conditions
+      description: combinatedfullyannotatedoperation/{petId}
       operationId: petId
       parameters:
       - name: petId
-        in: path
+        in: query
         description: ID of pet that needs to be fetched
         required: true
         schema:
@@ -55,6 +39,45 @@ paths:
           description: Invalid ID supplied
         404:
           description: Pet not found
+    put:
+      description: combinatedsameOperationName
+      operationId: combinated sameOperationName
+      responses:
+        default:
+          description: default response
+          content:
+            '*/*':
+              schema:
+                type: string
+    post:
+      operationId: getUser_1
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+      responses:
+        default:
+          description: default response
+          content:
+            '*/*':
+              schema:
+                type: string
+    head:
+      description: combinatedsameOperationNameDuplicated
+      operationId: combinatedsameOperationNameDuplicated
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+      responses:
+        default:
+          description: default response
+          content:
+            '*/*':
+              schema:
+                type: string
   /interfaceoperation/{petId}:
     get:
       summary: Find pet by ID Operation in SubResource
@@ -71,33 +94,6 @@ paths:
       responses:
         default:
           description: default response
-  /combinatedsameOperationNameDuplicated:
-    get:
-      description: Same Operation Name Duplicated
-      operationId: combinatedsameOperationNameDuplicated
-      requestBody:
-        content:
-          '*/*':
-            schema:
-              type: string
-      responses:
-        default:
-          description: default response
-          content:
-            '*/*':
-              schema:
-                type: string
-  /combinatedsameOperationName:
-    get:
-      description: Same Operation Name
-      operationId: combinated sameOperationName
-      responses:
-        default:
-          description: default response
-          content:
-            '*/*':
-              schema:
-                type: string
 components:
   schemas:
     Category:

@@ -73,6 +73,26 @@ paths:
           description: Invalid ID supplied
         404:
           description: Pet not found
+  /pet/bodyid:
+    post:
+      summary: Add a new pet to the store passing an integer with generic parameter
+        annotation
+      operationId: addPetByInteger
+      requestBody:
+        description: Pet object that needs to be added to the store
+        content:
+          application/json:
+            schema:
+              type: integer
+              format: int32
+          application/xml:
+            schema:
+              type: integer
+              format: int32
+        required: true
+      responses:
+        405:
+          description: Invalid input
   /pet:
     put:
       summary: Update an existing pet
@@ -119,26 +139,6 @@ paths:
           application/xml:
             schema:
               $ref: '#/components/schemas/Pet'
-      responses:
-        405:
-          description: Invalid input
-  /pet/bodyid:
-    post:
-      summary: Add a new pet to the store passing an integer with generic parameter
-        annotation
-      operationId: addPetByInteger
-      requestBody:
-        description: Pet object that needs to be added to the store
-        content:
-          application/json:
-            schema:
-              type: integer
-              format: int32
-          application/xml:
-            schema:
-              type: integer
-              format: int32
-        required: true
       responses:
         405:
           description: Invalid input
@@ -478,7 +478,7 @@ paths:
     get:
       summary: Find pet by ID Operation in SubResource
       description: Returns a pet in SubResource
-      operationId: getPetById_2
+      operationId: getPetById_1
       parameters:
       - name: petId
         in: path
@@ -515,9 +515,87 @@ paths:
             '*/*':
               schema:
                 type: string
-  /operationwithouannotation:
+  /operationsresource2:
     get:
       operationId: getUser_2
+      responses:
+        default:
+          description: default response
+          content:
+            '*/*':
+              schema:
+                type: string
+  /operationsresource:
+    get:
+      summary: Find pet by ID
+      description: combinatedfullyannotatedoperation/{petId}
+      operationId: petId_2
+      parameters:
+      - name: petId
+        in: query
+        description: ID of pet that needs to be fetched
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+      responses:
+        default:
+          description: The pet
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Pet'
+        400:
+          description: Invalid ID supplied
+        404:
+          description: Pet not found
+    put:
+      description: combinatedsameOperationName
+      operationId: combinated sameOperationName
+      responses:
+        default:
+          description: default response
+          content:
+            '*/*':
+              schema:
+                type: string
+    post:
+      operationId: getUser_3
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+      responses:
+        default:
+          description: default response
+          content:
+            '*/*':
+              schema:
+                type: string
+    head:
+      description: combinatedsameOperationNameDuplicated
+      operationId: combinatedsameOperationNameDuplicated
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+      responses:
+        default:
+          description: default response
+          content:
+            '*/*':
+              schema:
+                type: string
+  /operationwithouannotation:
+    get:
+      operationId: getUser_3
       responses:
         default:
           description: default response
@@ -879,30 +957,6 @@ paths:
       responses:
         default:
           description: default response
-  /methodWithRequestBodyAndTwoParameters:
-    post:
-      summary: Create user
-      description: This can only be done by the logged in user.
-      operationId: methodWithRequestBodyAndTwoParameters_2
-      parameters:
-      - name: name
-        in: query
-        schema:
-          type: string
-      - name: code
-        in: query
-        schema:
-          type: string
-      requestBody:
-        description: Created user object
-        content:
-          '*/*':
-            schema:
-              $ref: '#/components/schemas/User'
-        required: true
-      responses:
-        default:
-          description: default response
   /methodWithRequestBodyWithoutContent:
     get:
       summary: Create user
@@ -1032,6 +1086,30 @@ paths:
       responses:
         default:
           description: default response
+  /methodWithRequestBodyAndTwoParameters:
+    post:
+      summary: Create user
+      description: This can only be done by the logged in user.
+      operationId: methodWithRequestBodyAndTwoParameters_2
+      parameters:
+      - name: name
+        in: query
+        schema:
+          type: string
+      - name: code
+        in: query
+        schema:
+          type: string
+      requestBody:
+        description: Created user object
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      responses:
+        default:
+          description: default response
   /complexresponse:
     get:
       summary: Find pets
@@ -1084,7 +1162,7 @@ paths:
           description: Status OK
   /noimplementationresponseresource:
     get:
-      operationId: getUser_3
+      operationId: getUser_4
       parameters:
       - name: userId
         in: query
