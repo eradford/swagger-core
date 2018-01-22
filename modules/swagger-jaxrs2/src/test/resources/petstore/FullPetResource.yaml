@@ -2,6 +2,7 @@ openapi: 3.0.1
 info:
   title: Pet Resource Example
   description: API Definition
+  termsOfService: Terms of service
   contact:
     name: Fred
     url: http://gigantic-server.com
@@ -73,26 +74,6 @@ paths:
           description: Invalid ID supplied
         404:
           description: Pet not found
-  /pet/bodyid:
-    post:
-      summary: Add a new pet to the store passing an integer with generic parameter
-        annotation
-      operationId: addPetByInteger
-      requestBody:
-        description: Pet object that needs to be added to the store
-        content:
-          application/json:
-            schema:
-              type: integer
-              format: int32
-          application/xml:
-            schema:
-              type: integer
-              format: int32
-        required: true
-      responses:
-        405:
-          description: Invalid input
   /pet:
     put:
       summary: Update an existing pet
@@ -139,6 +120,26 @@ paths:
           application/xml:
             schema:
               $ref: '#/components/schemas/Pet'
+      responses:
+        405:
+          description: Invalid input
+  /pet/bodyid:
+    post:
+      summary: Add a new pet to the store passing an integer with generic parameter
+        annotation
+      operationId: addPetByInteger
+      requestBody:
+        description: Pet object that needs to be added to the store
+        content:
+          application/json:
+            schema:
+              type: integer
+              format: int32
+          application/xml:
+            schema:
+              type: integer
+              format: int32
+        required: true
       responses:
         405:
           description: Invalid input
@@ -405,7 +406,7 @@ paths:
   /sameOperationName:
     get:
       description: Same Operation Name
-      operationId: sameOperationName
+      operationId: getUser
       responses:
         default:
           description: default response
@@ -413,10 +414,9 @@ paths:
             '*/*':
               schema:
                 type: string
-  /sameOperationNameDuplicated:
-    get:
+    delete:
       description: Same Operation Name Duplicated
-      operationId: sameOperationNameDuplicated
+      operationId: getUser_1
       requestBody:
         content:
           '*/*':
@@ -492,7 +492,7 @@ paths:
           description: default response
   /notannotatedoperation:
     get:
-      operationId: getUser
+      operationId: getUser_1
       responses:
         default:
           description: default response
@@ -502,7 +502,7 @@ paths:
                 type: string
   /notannotatedoperationduplicated:
     get:
-      operationId: getUser_1
+      operationId: getUser_2
       requestBody:
         content:
           '*/*':
@@ -517,7 +517,7 @@ paths:
                 type: string
   /operationsresource2:
     get:
-      operationId: getUser_2
+      operationId: getUser_3
       responses:
         default:
           description: default response
@@ -565,7 +565,7 @@ paths:
               schema:
                 type: string
     post:
-      operationId: getUser_3
+      operationId: getUser_4
       requestBody:
         content:
           '*/*':
@@ -595,7 +595,7 @@ paths:
                 type: string
   /operationwithouannotation:
     get:
-      operationId: getUser_3
+      operationId: getUser_4
       responses:
         default:
           description: default response
@@ -957,6 +957,30 @@ paths:
       responses:
         default:
           description: default response
+  /methodWithRequestBodyAndTwoParameters:
+    post:
+      summary: Create user
+      description: This can only be done by the logged in user.
+      operationId: methodWithRequestBodyAndTwoParameters_2
+      parameters:
+      - name: name
+        in: query
+        schema:
+          type: string
+      - name: code
+        in: query
+        schema:
+          type: string
+      requestBody:
+        description: Created user object
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      responses:
+        default:
+          description: default response
   /methodWithRequestBodyWithoutContent:
     get:
       summary: Create user
@@ -1086,30 +1110,6 @@ paths:
       responses:
         default:
           description: default response
-  /methodWithRequestBodyAndTwoParameters:
-    post:
-      summary: Create user
-      description: This can only be done by the logged in user.
-      operationId: methodWithRequestBodyAndTwoParameters_2
-      parameters:
-      - name: name
-        in: query
-        schema:
-          type: string
-      - name: code
-        in: query
-        schema:
-          type: string
-      requestBody:
-        description: Created user object
-        content:
-          '*/*':
-            schema:
-              $ref: '#/components/schemas/User'
-        required: true
-      responses:
-        default:
-          description: default response
   /complexresponse:
     get:
       summary: Find pets
@@ -1162,7 +1162,7 @@ paths:
           description: Status OK
   /noimplementationresponseresource:
     get:
-      operationId: getUser_4
+      operationId: getUser_5
       parameters:
       - name: userId
         in: query
@@ -1272,7 +1272,7 @@ paths:
       responses:
         default:
           description: default response
-  /:
+  /tagsinmethod:
     get:
       tags:
       - Third Tag

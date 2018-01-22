@@ -5,7 +5,7 @@ tags:
   externalDocs:
     description: docs desc
 paths:
-  /:
+  /tagsinmethod:
     get:
       tags:
       - Third Tag

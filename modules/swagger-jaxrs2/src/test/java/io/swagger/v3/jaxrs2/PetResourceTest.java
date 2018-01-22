@@ -170,8 +170,8 @@ public class PetResourceTest extends AbstractAnnotationTest {
 
     @Test(description = "Test a full set of classes")
     public void testSetOfClasses() {
-        Reader reader = new Reader(new OpenAPI());
-        OpenAPI openAPI = reader.read(getSetOfClassesFromPackage(PETSTORE_PACKAGE));
+        final Reader reader = new Reader(new OpenAPI());
+        final OpenAPI openAPI = reader.read(getSetOfClassesFromPackage(PETSTORE_PACKAGE));
         assertNotNull(openAPI);
         try {
             SerializationMatchers.assertEqualsToYaml(openAPI, getOpenAPIAsString(PETSTORE_SOURCE + "FullPetResource.yaml"));
@@ -186,11 +186,11 @@ public class PetResourceTest extends AbstractAnnotationTest {
      * @param packageName target to scan the classes
      * @return Set<Class>
      */
-    public Set<Class<?>> getSetOfClassesFromPackage(final String packageName) {
+    private Set<Class<?>> getSetOfClassesFromPackage(final String packageName) {
         final Set<Class<?>> classSet = new HashSet<>();
         try {
-            Class[] classes = getClasses(packageName);
-            for (Class aClass : classes) {
+            final Class[] classes = getClasses(packageName);
+            for (final Class aClass : classes) {
                 classSet.add(aClass);
             }
         } catch (final ClassNotFoundException | IOException e) {
@@ -207,17 +207,17 @@ public class PetResourceTest extends AbstractAnnotationTest {
      */
     private static Class[] getClasses(final String packageName)
             throws ClassNotFoundException, IOException {
-        ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+        final ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
         assert classLoader != null;
-        String path = packageName.replace(DOT, SLASH);
-        Enumeration<URL> resources = classLoader.getResources(path);
-        List<File> dirs = new ArrayList<>();
+        final String path = packageName.replace(DOT, SLASH);
+        final Enumeration<URL> resources = classLoader.getResources(path);
+        final List<File> dirs = new ArrayList<>();
         while (resources.hasMoreElements()) {
-            URL resource = resources.nextElement();
+            final URL resource = resources.nextElement();
             dirs.add(new File(resource.getFile()));
         }
-        ArrayList<Class> classes = new ArrayList<>();
-        for (File directory : dirs) {
+        final ArrayList<Class> classes = new ArrayList<>();
+        for (final File directory : dirs) {
             classes.addAll(findClasses(directory, packageName));
         }
         return classes.toArray(new Class[classes.size()]);
@@ -231,13 +231,13 @@ public class PetResourceTest extends AbstractAnnotationTest {
      * @return The classes
      */
     private static List<Class> findClasses(final File directory, final String packageName) throws ClassNotFoundException {
-        List<Class> classes = new ArrayList<>();
+        final List<Class> classes = new ArrayList<>();
         if (!directory.exists()) {
             return classes;
         }
-        File[] files = directory.listFiles();
+        final File[] files = directory.listFiles();
         if (files != null) {
-            for (File file : files) {
+            for (final File file : files) {
                 if (file.isDirectory()) {
                     assert !file.getName().contains(".");
                     classes.addAll(findClasses(file, packageName + "." + file.getName()));
@@ -257,7 +257,6 @@ public class PetResourceTest extends AbstractAnnotationTest {
      */
     private void compare(final Class clazz, final String source) {
         final String file = source + clazz.getSimpleName() + YAML_EXTENSION;
-
         try {
             compareAsYaml(clazz, getOpenAPIAsString(file));
         } catch (IOException e) {

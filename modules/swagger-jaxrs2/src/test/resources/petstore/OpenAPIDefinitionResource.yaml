@@ -2,6 +2,7 @@ openapi: 3.0.1
 info:
   title: Pet Resource Example
   description: API Definition
+  termsOfService: Terms of service
   contact:
     name: Fred
     url: http://gigantic-server.com

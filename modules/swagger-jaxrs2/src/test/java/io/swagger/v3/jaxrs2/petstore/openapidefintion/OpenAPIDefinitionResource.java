@@ -18,6 +18,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
                 title = "Pet Resource Example",
                 version = "2.0",
                 description = "API Definition",
+                termsOfService = "Terms of service",
                 license = @License(name = "Apache 2.0", url = "http://foo.bar"),
                 contact = @Contact(url = "http://gigantic-server.com", name = "Fred", email = "Fred@gigagantic-server.com")
         ),

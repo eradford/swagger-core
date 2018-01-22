@@ -9,7 +9,7 @@ import javax.ws.rs.core.Response;
 
 public class TagMethodResource {
     @GET
-    @Path("/")
+    @Path("/tagsinmethod")
     @Tag(name = "Third Tag")
     @Tag(name = "Second Tag")
     @Tag(name = "Fourth Tag Full", description = "desc", externalDocs = @ExternalDocumentation(description = "docs desc"))

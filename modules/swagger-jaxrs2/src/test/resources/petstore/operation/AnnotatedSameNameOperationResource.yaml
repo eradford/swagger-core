@@ -3,7 +3,7 @@ paths:
   /sameOperationName:
     get:
       description: Same Operation Name
-      operationId: sameOperationName
+      operationId: getUser
       responses:
         default:
           description: default response
@@ -11,10 +11,9 @@ paths:
             '*/*':
               schema:
                 type: string
-  /sameOperationNameDuplicated:
-    get:
+    delete:
       description: Same Operation Name Duplicated
-      operationId: sameOperationNameDuplicated
+      operationId: getUser_1
       requestBody:
         content:
           '*/*':
